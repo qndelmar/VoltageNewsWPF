@@ -4,10 +4,12 @@ using Microsoft.VisualBasic;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Drawing;
 using System.Dynamic;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using VoltageNews.Helpers;
 using VoltageNews.Models;
 using VoltageNews.ViewModels;
@@ -15,33 +17,14 @@ using VoltageNews.ViewModels;
 namespace VoltageNews.Views;
 
 public partial class Register : Page
-{
-    Suggestions suggestions = new();
+{ 
+
     public Register()
     {
         InitializeComponent();
-        suggestions.suggestionsArray = new ObservableCollection<string>() { "@gmail.com", "@yandex.ru", "@outlook.com", "@mail.ru"};
-        emailBox.DataContext = suggestions;
     }
 
 
-    private void emailBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
-    {
-        if (emailBox.Text.Contains("@") || emailBox.Text.Length == 0)
-        {
-            emailBox.AutoComplete = false;
-            return;
-        }
-        else
-        {
-            emailBox.DataContext = suggestions;
-        }
-        suggestions.suggestionsArray[0] = emailBox.Text + "@gmail.com";
-        suggestions.suggestionsArray[1] = emailBox.Text + "@yandex.ru";
-        suggestions.suggestionsArray[2] = emailBox.Text + "@outlook.com";
-        suggestions.suggestionsArray[3] = emailBox.Text + "@mail.ru";
-        suggestions.OnPropertyChanged();
-    }
 
     private void PasswordBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
     {
@@ -58,19 +41,48 @@ public partial class Register : Page
         }
     }
 
-    private void submitButton_Click(object sender, RoutedEventArgs e)
+    private async void submitButton_Click(object sender, RoutedEventArgs e)
     {
         if(emailBox.Text.Length < 5 || nicknameBox.Text.Length == 0) {
             System.Windows.MessageBox.Show("Не все поля заполнены верно", "Error");
             return;
         }
+        User user = new User(nicknameBox.Text, emailBox.Text, passwordBox.Password);
+        bool result = await user.createUser();
+        if (result)
+        {
+            submitButton.Background = new SolidColorBrush(Colors.Green);
+        }
+    }
+
+    private async void emailBox_LostFocus(object sender, RoutedEventArgs e)
+    {
+        if(emailBox.Text.Length < 5)
+        {
+            return;
+        }
+        int result = await User.checkIfExists(emailBox.Text);
+        if (emailBox.Text.Length > 5 && result == 200)
+        {
+            emailTip.Text = "Great! Your email doesn't exist.";
+            emailTip.Foreground = new SolidColorBrush(Colors.DarkGreen);
+            emailBox.BorderBrush = new SolidColorBrush(Colors.DarkGreen);
+            emailTip.Visibility = Visibility.Visible;
+        }
+        else
+        {
+            emailTip.Text = "Oh... This email is already registered.";
+            emailTip.Foreground = new SolidColorBrush(Colors.Red);
+            emailBox.BorderBrush = new SolidColorBrush(Colors.Red);
+            emailTip.Visibility = Visibility.Visible;
+        }
+    }
+
+    private void emailBox_GotKeyboardFocus(object sender, System.Windows.Input.KeyboardFocusChangedEventArgs e)
+    {
+        emailTip.Visibility = Visibility.Collapsed;
+        emailBox.BorderBrush = new SolidColorBrush(Colors.Gray);
     }
 }
 
-public class Suggestions : ObservableObject
-{
-    public ObservableCollection<string> suggestionsArray
-    {
-        get; set;
-    }
-}
+

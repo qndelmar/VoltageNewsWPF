@@ -3,11 +3,14 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:vm="clr-namespace:VoltageNews.ViewModels"
       xmlns:local="clr-namespace:VoltageNews.Views"
       xmlns:hc="https://handyorg.github.io/handycontrol"
       mc:Ignorable="d"
       Title="Register" Height="450" Width="800" MinHeight="450" MaxHeight="450" MinWidth="800" MaxWidth="800">
-    
+    <Page.DataContext>
+        <vm:Register/>
+    </Page.DataContext>
     
     <Grid>
         <Grid.ColumnDefinitions>
@@ -22,18 +25,18 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="4*"></RowDefinition>
+                <RowDefinition Height="8*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <StackPanel Grid.Column="1" Grid.Row="1">
                 <TextBlock HorizontalAlignment="Center" FontWeight="ExtraBold" FontSize="18">CREATE NEW ACCOUNT</TextBlock>
                 <TextBlock HorizontalAlignment="Left" Margin="10 0 0 5" Text="Email" Foreground="Black" Style="{StaticResource TextBlockDefaultThiLight}"/>
-                <hc:AutoCompleteTextBox Name="emailBox" KeyUp="emailBox_KeyUp" ItemsSource="{Binding suggestionsArray, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-
+                <hc:AutoCompleteTextBox LostKeyboardFocus="emailBox_LostFocus" GotKeyboardFocus="emailBox_GotKeyboardFocus" Name="emailBox" ItemsSource="{Binding AllSuggestions, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Text="{Binding Email,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 </hc:AutoCompleteTextBox>
+                <TextBlock HorizontalAlignment="Left" Name="emailTip" Margin="10 0 0 5" Visibility="Collapsed"  Foreground="Black" Style="{StaticResource TextBlockDefaultThiLight}"/>
                 <TextBox x:Name="nicknameBox" Style="{StaticResource TextBoxExtend}" hc:InfoElement.Title="Nickname" VerticalAlignment="Center"/>
                 <hc:PasswordBox Name="passwordBox" KeyUp="PasswordBox_KeyUp" hc:InfoElement.Title="Password" ShowEyeButton="True"/>
-                <ProgressBar Foreground="#FFFFB52C" Name="difficultyProgress" hc:VisualElement.Text="" Height="5" Margin="0 15 0 0"/>
+                <ProgressBar Foreground="#FFFFB52C"  Name="difficultyProgress" hc:VisualElement.Text="" Height="5" Margin="0 15 0 0"/>
                 <TextBlock HorizontalAlignment="Left" Margin="5" Name="passwordTip" Style="{StaticResource TextBlockDefaultDanger}"/>
                 <Button Click="submitButton_Click" Name="submitButton" Content="Register" IsEnabled="False" Style="{StaticResource ButtonPrimary}"/>
             </StackPanel>

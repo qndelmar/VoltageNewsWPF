@@ -27,7 +27,7 @@ namespace VoltageNews
         public MainWindow()
         {
             InitializeComponent();
-            myFrame.Navigate(new Register());
+            myFrame.Navigate(new Auth());
             Helpers.PageManager.frame = myFrame;
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;

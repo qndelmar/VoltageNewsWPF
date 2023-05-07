@@ -4,9 +4,48 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:VoltageNews.Views"
+      xmlns:vm="clr-namespace:VoltageNews.ViewModels"
+      xmlns:hc="https://handyorg.github.io/handycontrol"
       mc:Ignorable="d"
       Title="Auth" Height="450" Width="800">
+    <Page.DataContext>
+        <vm:Auth/>
+    </Page.DataContext>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Rectangle Grid.Column="2"  RenderTransformOrigin="0.5,0.5" Margin="183,210,46,-105" Fill="#FFB34B4B">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="45"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Grid.Column="2" Height="300"  RenderTransformOrigin="0.5,0.5" Margin="228,270,3,-120" Fill="#FFB34B4B">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="-3.156"/>
+                    <RotateTransform Angle="45"/>
+                    <TranslateTransform X="1.17" Y="-1.17"/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <StackPanel Grid.Column="1" Margin="0 80 0 0">
+            <TextBlock Style="{StaticResource TextBlockBoldBaseStyle}" Text="SIGN IN" FontSize="36"/>
+            <TextBlock Style="{StaticResource TextBlockDefaultDanger}" Text="" Name="errorTextBlock"/>
+            <hc:TextBox GotFocus="boxes_GotFocus" Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Name="emailBox" hc:InfoElement.Placeholder="Email" Margin="0 10 0 0"/>
+            <hc:PasswordBox GotFocus="boxes_GotFocus" KeyUp="passwordBox_KeyUp"  Name="passwordBox" hc:InfoElement.Placeholder="Password" Margin="0 10 0 0" hc:ShowEyeButton="True"/>
+            <Button Click="submitBtn_Click" x:Name="submitBtn" Content="Let's go" Width="200" Margin="0 10 0 0" Style="{StaticResource ButtonPrimary}"/>
+        </StackPanel>
     </Grid>
 </Page>
