@@ -8,7 +8,17 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <None Remove="Assets\add.png" />
       <None Remove="Assets\authbg.svg" />
+      <None Remove="Assets\customer-service.png" />
+      <None Remove="Assets\graph.png" />
+      <None Remove="Assets\home.png" />
+      <None Remove="Assets\settings.png" />
+      <None Remove="Assets\user.png" />
+      <None Remove="Views\graph.png" />
+      <Resource Include="Assets\add.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
       <Resource Include="Assets\authbg.svg">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Resource>
@@ -16,6 +26,8 @@
       <None Include="..\.editorconfig" Link=".editorconfig" />
       <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
       <PackageReference Include="HandyControl" Version="3.4.0" />
+      <PackageReference Include="MaterialMenu" Version="0.0.4.5" />
+      <PackageReference Include="Meziantou.WpfFontAwesome" Version="5.15.4" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5">
         <PrivateAssets>all</PrivateAssets>
@@ -29,6 +41,22 @@
       <Resource Include="Assets\auth.jpg">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Resource>
+      <Resource Include="Assets\customer-service.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <Resource Include="Assets\graph.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <Resource Include="Assets\home.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <Resource Include="Assets\settings.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <Resource Include="Assets\user.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <Resource Include="Views\graph.png" />
     </ItemGroup>
 
 </Project>

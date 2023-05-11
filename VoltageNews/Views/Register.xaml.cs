@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Dynamic;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -52,6 +53,9 @@ public partial class Register : Page
         if (result)
         {
             submitButton.Background = new SolidColorBrush(Colors.Green);
+            Thread.Sleep(300);
+            PageManager.frame.Navigate(new MainPage());
+            ChangeWindowSize.ChangingWindowSize(1100, 650, MainWindow.GetWindow(this));
         }
     }
 

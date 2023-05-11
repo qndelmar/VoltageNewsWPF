@@ -1,5 +1,6 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Media;
+using VoltageNews.Helpers;
 using VoltageNews.ViewModels;
 
 namespace VoltageNews.Views;
@@ -42,6 +43,8 @@ public partial class Auth : Page
             emailBox.BorderBrush = new SolidColorBrush(Colors.Red);
             return;
         }
+        PageManager.frame.Navigate(new MainPage());
+        ChangeWindowSize.ChangingWindowSize(1100, 650, MainWindow.GetWindow(this));
     }
 
     private void boxes_GotFocus(object sender, System.Windows.RoutedEventArgs e)

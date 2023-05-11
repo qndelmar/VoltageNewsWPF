@@ -24,11 +24,14 @@ namespace VoltageNews
     /// </summary>
     public partial class MainWindow : Window
     {
+        static MainWindow window;
         public MainWindow()
         {
             InitializeComponent();
             myFrame.Navigate(new Auth());
             Helpers.PageManager.frame = myFrame;
+            Helpers.PageManager.frame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+            window = this;
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
             ConfigHelper.Instance.SetLang("en");

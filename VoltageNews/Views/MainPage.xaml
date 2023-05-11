@@ -1,0 +1,58 @@
+﻿<Page x:Class="VoltageNews.Views.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VoltageNews.Views"
+      xmlns:fa="clr-namespace:Meziantou.WpfFontAwesome;assembly=Meziantou.WpfFontAwesome"
+      xmlns:vm="clr-namespace:VoltageNews.ViewModels"
+      xmlns:hc="https://handyorg.github.io/handycontrol"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1100"
+      Title="MainPage">
+    <Page.DataContext>
+        <vm:MainPageVM/>
+    </Page.DataContext>
+    <StackPanel Orientation="Horizontal">
+        <hc:SideMenu Width="250" HorizontalAlignment="Left">
+            <hc:Interaction.Triggers>
+                <hc:EventTrigger EventName="SelectionChanged">
+                    <hc:EventToCommand Command="{Binding SwitchItemCmd}" PassEventArgsToCommand="True" />
+                </hc:EventTrigger>
+            </hc:Interaction.Triggers>
+            <hc:SideMenuItem Height="150" Background="LightBlue" Header="Welcome" FontSize="20">
+            </hc:SideMenuItem>
+            <hc:SideMenuItem Header="Главная" FontWeight="Bold">
+                <hc:SideMenuItem.Icon>
+                    <Image Source="/Assets/home.png" Height="30" Width="30"/>
+                </hc:SideMenuItem.Icon>
+            </hc:SideMenuItem>
+            <hc:SideMenuItem Header="Профиль" FontWeight="Bold">
+                <hc:SideMenuItem.Icon>
+                    <Image Source="/Assets/user.png" Height="30" Width="30"/>
+                </hc:SideMenuItem.Icon>
+            </hc:SideMenuItem>
+            <hc:SideMenuItem Header="Настройки" FontWeight="Bold">
+                <hc:SideMenuItem.Icon>
+                    <Image Source="/Assets/settings.png" Height="30" Width="30"/>
+                </hc:SideMenuItem.Icon>
+            </hc:SideMenuItem>
+            <hc:SideMenuItem Header="Статистика" FontWeight="Bold">
+                <hc:SideMenuItem.Icon>
+                    <Image Source="/Assets/graph.png" Height="30" Width="30"/>
+                </hc:SideMenuItem.Icon>
+            </hc:SideMenuItem>
+            <hc:SideMenuItem Header="Добавить новость" FontWeight="Bold">
+                <hc:SideMenuItem.Icon>
+                    <Image Source="/Assets/add.png" Height="30" Width="30"/>
+                </hc:SideMenuItem.Icon>
+            </hc:SideMenuItem>
+            <hc:SideMenuItem Header="Поддержка пользователей" FontWeight="Bold">
+                <hc:SideMenuItem.Icon>
+                    <Image Source="/Assets/customer-service.png" Height="30" Width="30"/>
+                </hc:SideMenuItem.Icon>
+            </hc:SideMenuItem>
+        </hc:SideMenu>
+        <Frame Name="frame" Width="850" />
+    </StackPanel>
+</Page>
