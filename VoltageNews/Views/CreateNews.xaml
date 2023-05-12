@@ -4,11 +4,22 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:VoltageNews.Views"
+      xmlns:vm="clr-namespace:VoltageNews.ViewModels"
+      xmlns:hc="https://handyorg.github.io/handycontrol"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CreateNews">
+    <Page.DataContext>
+        <vm:CreateNewsVM/>
+    </Page.DataContext>
 
-    <Grid>
-        
-    </Grid>
+    <StackPanel>
+        <TextBlock Style="{StaticResource TextBlockBoldBaseStyle}" Text="Добавление новости" Margin="0 30 0 0" FontSize="26"/>
+        <hc:TextBox hc:InfoElement.Placeholder="Заголовок статьи" HorizontalAlignment="Center" Width="300" Margin="0 10 0 0"/>
+        <StackPanel Margin="0 10 0 0" Orientation="Horizontal" Width="300">
+            <Button Style="{StaticResource ButtonPrimary}" Content="Upload image" Command="{Binding AddImageCommand}"/>
+            <TextBlock Style="{StaticResource TextBlockBaseStyle}" Text="Not uploaded" Margin="5 0 0 0"/>
+        </StackPanel>
+
+    </StackPanel>
 </Page>
