@@ -45,7 +45,16 @@ public partial class User
             using (VoltageDbContext db = new VoltageDbContext())
             {
                 db.Users.Add(this);
-                await db.SaveChangesAsync();
+                try
+                {
+                      await db.SaveChangesAsync();
+                      UserStore.User = this;
+                }
+                catch(Exception ex)
+                {
+
+                }
+
             }
             return true;
         }
@@ -91,9 +100,12 @@ public partial class User
                 {
                     return 401;
                 }
+                UserStore.User = result;
                 return 200;
             }
         }
-        catch { return 500; }
+        catch (Exception ex) {
+            return 500; 
+        }
     }
 }

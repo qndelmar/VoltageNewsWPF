@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using VoltageNews.Helpers;
 using VoltageNews.ViewModels;
@@ -52,5 +53,20 @@ public partial class Auth : Page
         errorTextBlock.Text = "";
         emailBox.BorderBrush = new SolidColorBrush(Colors.LightGray);
         passwordBox.BorderBrush = new SolidColorBrush(Colors.LightGray);
+    }
+
+    private void TextBlock_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+    {
+        PageManager.frame?.Navigate(new Register());
+    }
+
+    private void TextBlock_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+    {
+        (sender as TextBlock).TextDecorations = TextDecorations.Underline;
+    }
+
+    private void TextBlock_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+    {
+        (sender as TextBlock).TextDecorations = null;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace VoltageNews.Models;
 
@@ -26,4 +27,21 @@ public partial class Article
     public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
 
     public virtual ICollection<Category> Categories { get; set; } = new List<Category>();
+
+    public Article(string title, string shortDescription, string ArticleText, int author, string imageUri)
+    {
+        this.ArticleText = ArticleText;
+        this.Title = title;
+        this.ShortDescription = shortDescription;
+        this.Author = author;
+        this.ImageUri = imageUri;
+        this.Views = 0;
+        
+    }
+
+    public string createArticle()
+    {
+
+        return "";
+    }
 }

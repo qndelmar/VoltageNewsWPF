@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VoltageNews.Helpers;
+using VoltageNews.Models;
 
 namespace VoltageNews.Views
 {
@@ -26,6 +27,13 @@ namespace VoltageNews.Views
             InitializeComponent();
             frame.Navigate(new HomePage());
             PageManager.helpFrame = frame;
+            PageManager.helpFrame.JournalOwnership = JournalOwnership.OwnsJournal;
+            PageManager.helpFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+            if(UserStore.User.Role < 1)
+            {
+                graphs.Visibility = Visibility.Collapsed;
+                addNews.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

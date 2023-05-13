@@ -39,8 +39,10 @@
                 <ProgressBar Foreground="#FFFFB52C"  Name="difficultyProgress" hc:VisualElement.Text="" Height="5" Margin="0 15 0 0"/>
                 <TextBlock HorizontalAlignment="Left" Margin="5" Name="passwordTip" Style="{StaticResource TextBlockDefaultDanger}"/>
                 <Button Click="submitButton_Click" Name="submitButton" Content="Register" IsEnabled="False" Style="{StaticResource ButtonPrimary}"/>
+                <TextBlock HorizontalAlignment="Center" MouseUp="TextBlock_MouseUp" Text="Log in"></TextBlock>
             </StackPanel>
         </Grid>
         <Image  Source="/Assets/auth.jpg"  Grid.Column="1"/>
+
     </Grid>
 </Page>

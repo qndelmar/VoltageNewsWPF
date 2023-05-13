@@ -37,5 +37,6 @@ namespace VoltageNews.ViewModels
             int result = await User.authorize(email, password);
             return result;
         }
+
     }
 }

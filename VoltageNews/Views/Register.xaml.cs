@@ -87,6 +87,11 @@ public partial class Register : Page
         emailTip.Visibility = Visibility.Collapsed;
         emailBox.BorderBrush = new SolidColorBrush(Colors.Gray);
     }
+
+    private void TextBlock_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+    {
+        PageManager.frame?.GoBack();
+    }
 }
 
 
