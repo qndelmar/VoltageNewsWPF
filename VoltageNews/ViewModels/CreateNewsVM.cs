@@ -19,16 +19,16 @@ namespace VoltageNews.ViewModels
 {
     class CreateNewsVM : ObservableObject
     {
-        private static string _filePath { get; set; }
+        private static string? _filePath { get; set; }
         private static string uploadUri { get; set; } = "Not uploaded";
-        private static string title { get; set; }
-        private static string category { get; set; }
-        private static string shortDescription { get; set; }
-        private static string articleText { get; set; }
+        private static string? title { get; set; }
+        private static string? category { get; set; }
+        private static string? shortDescription { get; set; }
+        private static string? articleText { get; set; }
         private Visibility loadVisibility { get; set; } = Visibility.Collapsed;
-        private static RelayCommand addImageCommand;
-        private static RelayCommand createPost;
-        private static RelayCommand cancelBtnClick;
+        private static RelayCommand? addImageCommand;
+        private static RelayCommand? createPost;
+        private static RelayCommand? cancelBtnClick;
        
 
 
@@ -112,21 +112,23 @@ namespace VoltageNews.ViewModels
                 {
                     if (title?.Length < 10 || shortDescription?.Length < 10 || articleText?.Length < 10 || category?.Length < 1 || _filePath == null)
                     {
-                        title = "";
                         MessageBox.Show("Not all fields is correct now.");
                         return;
                     }
                     LoadVisibility = Visibility.Visible;
-                    OnPropertyChanged();
                     string imageLink = await uploadToImgur();
                     if(imageLink == "Error")
                     {
                         MessageBox.Show("Some error occured... Try another image...");
                         return;
                     }
-                    string result = await AddRawToDb(imageLink);
+                    Article article = new(title, shortDescription, articleText, UserStore.User.Id, imageLink);
+                    string result = await article.createArticle(category);
+                    clearValues();
                     loadVisibility = Visibility.Collapsed;
                     MessageBox.Show(result);
+                    goToHomepage();
+
                 }));
             }
         }
@@ -156,26 +158,6 @@ namespace VoltageNews.ViewModels
             }
         }
 
-        public async static Task<string> AddRawToDb(string imageLink)
-        {
-
-            try { 
-                using(VoltageDbContext db = new())
-                {
-                    Article article = new(title, shortDescription, articleText, UserStore.User.Id, imageLink);
-                    article.Categories.Add(db.Categories.First(r => r.Title == category));
-                    db.Articles.Add(article);
-                    await db.SaveChangesAsync();
-                    clearValues();
-                    goToHomepage();
-                    return "All posts has been succesfully created!";
-                }
-            }
-            catch(Exception ex)
-            {
-                return "Ooops... Try later...";
-            }
-        }
 
         public static void clearValues()
         {
@@ -184,7 +166,7 @@ namespace VoltageNews.ViewModels
 
         public static void goToHomepage()
         {
-            PageManager.helpFrame?.Navigate(new HomePage());
+            PageManager.helpFrame?.Navigate(MainPageVM.homepage);
             PageManager.helpFrame?.RemoveBackEntry();
         }
     }

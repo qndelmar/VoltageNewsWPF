@@ -38,7 +38,7 @@ public partial class VoltageDbContext : DbContext
 
             entity.Property(e => e.NewsId).HasColumnName("newsID");
             entity.Property(e => e.ArticleText)
-                .HasColumnType("text")
+                .HasColumnType("nvarchar(MAX)")
                 .HasColumnName("articleText");
             entity.Property(e => e.Author).HasColumnName("author");
             entity.Property(e => e.Created)

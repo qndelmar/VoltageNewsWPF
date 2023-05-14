@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace VoltageNews.Models;
 
@@ -39,9 +42,45 @@ public partial class Article
         
     }
 
-    public string createArticle()
+    public async Task<string> createArticle(string category)
     {
+        try
+        {
+            using (VoltageDbContext db = new())
+            {
 
-        return "";
+                this.Categories.Add(db.Categories.First(r => r.Title == category));
+                db.Articles.Add(this);
+                await db.SaveChangesAsync();
+                return "All posts has been succesfully created!";
+            }
+        }
+        catch (Exception ex)
+        {
+            return "Ooops... Try later...";
+        }
+    }
+
+    public static List<Article> GetArticlesAsync()
+    {
+        using(VoltageDbContext dbContext = new())
+        {
+            return dbContext.Articles.ToList();
+        }
+    }
+    public static List<Article> GetFixedAmount(int pageNum, int amount)
+    {
+        using(VoltageDbContext dbContext = new())
+        {
+            return dbContext.Articles.OrderBy(b => -b.NewsId).Skip((pageNum - 1) * 10).Take(amount).ToList();
+        }
+    }
+
+    public static double GetCount()
+    {
+        using(VoltageDbContext ctx = new())
+        {
+            return ctx.Articles.Count();
+        }
     }
 }

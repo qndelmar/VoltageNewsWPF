@@ -15,6 +15,7 @@ namespace VoltageNews.ViewModels
     internal class MainPageVM : ObservableObject
     {
         private int selectedItem { get; set; }
+        public static HomePage homepage = new HomePage();
 
         private RelayCommand? switchItemCmd;
 
@@ -35,32 +36,38 @@ namespace VoltageNews.ViewModels
             {
                 case ("Главная"):
                     {
-                        PageManager.helpFrame?.Navigate(new HomePage());
+                        PageManager.helpFrame?.Navigate(homepage);
+                        PageManager.helpFrame?.RemoveBackEntry();
                         break;
                     }
                 case ("Профиль"):
                     {
                         PageManager.helpFrame?.Navigate(new Account());
+                        PageManager.helpFrame?.RemoveBackEntry();
                         break;
                     }
                 case ("Настройки"):
                     {
                         PageManager.helpFrame?.Navigate(new Settings());
+                        PageManager.helpFrame?.RemoveBackEntry();
                         break;
                     }
                 case ("Статистика"):
                     {
                         PageManager.helpFrame?.Navigate(new Graphs());
+                        PageManager.helpFrame?.RemoveBackEntry();
                         break;
                     }
                 case ("Добавить новость"):
                     {
                         PageManager.helpFrame?.Navigate(new CreateNews());
+                        PageManager.helpFrame?.RemoveBackEntry();
                         break;
                     }
                 case ("Поддержка пользователей"):
                     {
                         PageManager.helpFrame?.Navigate(new Support());
+                        PageManager.helpFrame?.RemoveBackEntry();
                         break;
                     }
                 default:break;
