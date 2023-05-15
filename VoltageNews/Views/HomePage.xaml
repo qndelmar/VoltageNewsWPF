@@ -13,7 +13,10 @@
         <vm:HomePageViewModel/>
     </Page.DataContext>
     <StackPanel>
-        <ListBox ScrollViewer.VerticalScrollBarVisibility="Auto" Height="500"  Margin="10" ItemsSource="{Binding Data}"  
+        <StackPanel Orientation="Horizontal">
+            <hc:SearchBar Text="{Binding SearchText}" Width="380" hc:InfoElement.Placeholder="Write smth..." IsRealTime="False" Command="{Binding SearchItems}" Margin="20 30 0 0"  Style="{StaticResource SearchBarExtend}" hc:InfoElement.Necessary="True" />
+        </StackPanel>
+        <ListBox ScrollViewer.VerticalScrollBarVisibility="Auto" Height="450" Width="800"  Margin="0 20 0 0" ItemsSource="{Binding Data}"  
          Style="{DynamicResource StackPanelHorizontalListBox}">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -22,7 +25,7 @@
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderThickness="1" BorderBrush="Black" Margin="10 50">
+                    <Border BorderThickness="1" BorderBrush="Black" Margin="5 50">
                         <StackPanel MouseUp="StackPanel_MouseUp" Width="250" Height="200">
                             <Image Width="250" Height="144">
                                 <Image.Source>
@@ -36,6 +39,6 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <hc:Pagination HorizontalAlignment="Center" Margin="0 10 0 0"  MaxPageCount="{Binding PagesAmount}" PageUpdated="Pagination_PageUpdated"  PageIndex="1" IsJumpEnabled="True"/>
+        <hc:Pagination HorizontalAlignment="Center" Margin="0 10 0 0"  MaxPageCount="{Binding PagesAmount}" PageUpdated="Pagination_PageUpdated"  PageIndex="{Binding PageIndex}" IsJumpEnabled="True"/>
     </StackPanel>
 </Page>

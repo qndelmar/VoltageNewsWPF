@@ -83,4 +83,20 @@ public partial class Article
             return ctx.Articles.Count();
         }
     }
+
+    public static List<Article> SearchItems(string text, int pageNum, int amount)
+    {
+        using (VoltageDbContext dbContext = new())
+        {
+            return dbContext.Articles.OrderBy(b => -b.NewsId).Where(r => r.Title.Contains(text)).Skip((pageNum-1)*10).Take(amount).ToList();
+        }
+    }
+
+    public static double GetItemsCount(string text)
+    {
+        using(VoltageDbContext dbContext = new())
+        {
+            return dbContext.Articles.Where(r => r.Title.Contains(text)).Count();
+        }
+    }
 }
