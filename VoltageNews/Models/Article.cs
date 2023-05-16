@@ -68,11 +68,19 @@ public partial class Article
             return dbContext.Articles.ToList();
         }
     }
+    public static List<Article> GetSortedArticlesByPageNumber(string sortType, int pageNum, int amount)
+    {
+        using(VoltageDbContext dbContext = new())
+        {
+            return dbContext.Articles.OrderBy(b => -b.NewsId).Where(r => r.Categories.FirstOrDefault(r => r.Title == sortType) != null)
+                .Skip((pageNum - 1) * 9).Take(amount).ToList();
+        }
+    }
     public static List<Article> GetFixedAmount(int pageNum, int amount)
     {
         using(VoltageDbContext dbContext = new())
         {
-            return dbContext.Articles.OrderBy(b => -b.NewsId).Skip((pageNum - 1) * 10).Take(amount).ToList();
+            return dbContext.Articles.OrderBy(b => -b.NewsId).Skip((pageNum - 1) * 9).Take(amount).ToList();
         }
     }
 
@@ -88,7 +96,7 @@ public partial class Article
     {
         using (VoltageDbContext dbContext = new())
         {
-            return dbContext.Articles.OrderBy(b => -b.NewsId).Where(r => r.Title.Contains(text)).Skip((pageNum-1)*10).Take(amount).ToList();
+            return dbContext.Articles.OrderBy(b => -b.NewsId).Where(r => r.Title.Contains(text)).Skip((pageNum-1)*9).Take(amount).ToList();
         }
     }
 
@@ -97,6 +105,13 @@ public partial class Article
         using(VoltageDbContext dbContext = new())
         {
             return dbContext.Articles.Where(r => r.Title.Contains(text)).Count();
+        }
+    }
+    public static Article GetOnePost(int id)
+    {
+        using(VoltageDbContext dbContext = new())
+        {
+            return dbContext.Articles.First(r => r.NewsId == id);
         }
     }
 }

@@ -41,5 +41,21 @@ namespace VoltageNews.Views
         {
             (DataContext as HomePageViewModel).Pagination(e.Info, 9);
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void comboBox_DropDownClosed(object sender, EventArgs e)
+        {
+            if((sender as ComboBox).Text == "Default")
+            {
+                (DataContext as HomePageViewModel).Pagination(1, 9);
+                return;
+            }
+            (DataContext as HomePageViewModel).SortData((sender as ComboBox).Text);
+
+        }
     }
 }

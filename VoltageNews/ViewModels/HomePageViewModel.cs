@@ -16,6 +16,7 @@ namespace VoltageNews.ViewModels
         private int pagesAmount { get; set; }
         private RelayCommand searchItems { get; set; }
         private static string searchText { get; set; }
+        private static string sortText { get; set; }
         private int pageIndex { get; set; }
         public int PageIndex
         {
@@ -27,6 +28,18 @@ namespace VoltageNews.ViewModels
             {
                 pageIndex = value;
                 OnPropertyChanged();
+            }
+        }
+
+        public string SortText
+        {
+            get
+            {
+                return sortText;
+            }
+            set
+            {
+                sortText = value; OnPropertyChanged();
             }
         }
 
@@ -102,7 +115,16 @@ namespace VoltageNews.ViewModels
                 this.SearchItems.Execute(pageNum);
                 return;
             }
+            if(sortText != null && sortText.Split(": ")[1] != "Default")
+            {
+                Data = new ObservableCollection<Article>(Article.GetSortedArticlesByPageNumber(SortText.Split(": ")[1], pageNum, amount));
+                return;
+            }
             Data = new ObservableCollection<Article>(Article.GetFixedAmount(pageNum, amount));
+        }
+        public void SortData(string sortType)
+        {
+            Data = new ObservableCollection<Article>(Article.GetSortedArticlesByPageNumber(sortType, 1, 9));
         }
         public void ComputePagesAmount()
         {

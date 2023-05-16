@@ -5,10 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:VoltageNews.Views"
       mc:Ignorable="d" 
+      xmlns:vm="clr-namespace:VoltageNews.ViewModels"
+      xmlns:hc="https://handyorg.github.io/handycontrol"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SoloPost">
-    
-    <Grid>
-        <TextBlock Name="textbl"  Text="{Binding Id}"/>
+    <Page.DataContext>
+        <vm:SoloPostVM/>
+    </Page.DataContext>
+    <Grid DataContext="{Binding Article}">
+        <TextBlock Name="Title"  Text="{Binding Title}"/>
     </Grid>
 </Page>

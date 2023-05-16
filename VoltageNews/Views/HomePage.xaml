@@ -15,6 +15,14 @@
     <StackPanel>
         <StackPanel Orientation="Horizontal">
             <hc:SearchBar Text="{Binding SearchText}" Width="380" hc:InfoElement.Placeholder="Write smth..." IsRealTime="False" Command="{Binding SearchItems}" Margin="20 30 0 0"  Style="{StaticResource SearchBarExtend}" hc:InfoElement.Necessary="True" />
+            <hc:ComboBox SelectedValue="{Binding SortText}" Height="35" Width="200" Margin="20 30 0 0" SelectionChanged="ComboBox_SelectionChanged" Name="comboBox" DropDownClosed="comboBox_DropDownClosed">
+                <ComboBoxItem>
+                    Default
+                </ComboBoxItem>
+                <ComboBoxItem>Срочные новости</ComboBoxItem>
+                <ComboBoxItem>Развлечения</ComboBoxItem>
+                <ComboBoxItem>Политика</ComboBoxItem>
+            </hc:ComboBox>
         </StackPanel>
         <ListBox ScrollViewer.VerticalScrollBarVisibility="Auto" Height="450" Width="800"  Margin="0 20 0 0" ItemsSource="{Binding Data}"  
          Style="{DynamicResource StackPanelHorizontalListBox}">

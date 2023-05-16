@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VoltageNews.ViewModels;
 
 namespace VoltageNews.Views
 {
@@ -20,12 +21,10 @@ namespace VoltageNews.Views
     /// </summary>
     public partial class SoloPost : Page
     {
-        private string Id;
         public SoloPost(int id)
         {
             InitializeComponent();
-            Id = id.ToString();
-            textbl.Text = id.ToString();
+            (DataContext as SoloPostVM).Init(id);
         }
     }
 }
