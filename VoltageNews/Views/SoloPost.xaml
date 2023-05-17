@@ -12,7 +12,30 @@
     <Page.DataContext>
         <vm:SoloPostVM/>
     </Page.DataContext>
-    <Grid DataContext="{Binding Article}">
-        <TextBlock Name="Title"  Text="{Binding Title}"/>
-    </Grid>
+    <ScrollViewer>
+    <StackPanel Margin="20,20,20,112" ScrollViewer.HorizontalScrollBarVisibility="Visible" Height="714">
+            <StackPanel Visibility="Visible" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="X" Margin="0 0 10 0" Style="{StaticResource ButtonDanger}" Command="{Binding DeleteArticle}">
+                    
+                </Button>
+                <Button Content="Edit" Margin="0 0 10 0" Style="{StaticResource ButtonInfo}"></Button>
+            </StackPanel>
+            <TextBlock Name="Title" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20 0"  Style="{StaticResource TextBlockBoldBaseStyle}" FontSize="30" Text="{Binding Article.Title}"/>
+            <Image Source="{Binding Article.ImageUri}" Width="532" Height="300"/>
+            <Grid Width="532" Height="25"  HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Style="{StaticResource TextBlockDefaultBold}" Margin="0" Grid.Column="0" Text="{Binding AuthorName}" />
+            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Image Source="/Assets/eye.png" Width="25" VerticalAlignment="Center"/>
+                    <TextBlock Style="{StaticResource TextBlockDefaultBold}" Margin="5 0 0 0" FontSize="15" Foreground="Gray" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{Binding Article.Views}" />
+            </StackPanel>
+               
+            </Grid>
+            <TextBlock Width="530" Margin="0 20 0 0" HorizontalAlignment="Center" Style="{StaticResource TextBlockDefault}" Text="{Binding Article.ArticleText}" TextWrapping="Wrap"/>
+        </StackPanel>
+    </ScrollViewer>
 </Page>

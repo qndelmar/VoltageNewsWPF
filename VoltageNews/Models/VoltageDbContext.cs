@@ -70,7 +70,7 @@ public partial class VoltageDbContext : DbContext
                         .HasConstraintName("FK_ArticlesCategory_Categories"),
                     l => l.HasOne<Article>().WithMany()
                         .HasForeignKey("ArticleId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .HasConstraintName("FK_ArticlesCategory_Articles"),
                     j =>
                     {

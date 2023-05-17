@@ -3,15 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Navigation;
 using VoltageNews.Helpers;
 using VoltageNews.Models;
+using VoltageNews.Views;
 
 namespace VoltageNews.ViewModels
 {
     internal class SoloPostVM : ObservableObject
     {
         private Article article { get; set; }
+        private string authorName { get; set; }
+        private RelayCommand deleteArticle { get; set; }
+
+        public string AuthorName
+        {
+            get { return authorName; }
+            set { authorName = value; OnPropertyChanged(); }
+        }
 
         public Article Article
         {
@@ -22,9 +32,38 @@ namespace VoltageNews.ViewModels
                 OnPropertyChanged();
             }
         }
+        public RelayCommand DeleteArticle
+        {
+            get
+            {
+                return deleteArticle ?? (deleteArticle = new RelayCommand(r =>
+                {
+                    if(MessageBox.Show("Are you sure?", "Question", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                    {
+                        bool result = Article.deleteArticle(article.NewsId);
+                        if (result == true)
+                        {
+                            PageManager.helpFrame?.Navigate(new HomePage());
+                            PageManager.helpFrame?.RemoveBackEntry();
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Something went wrong");
+                        }
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                }));
+            }
+        }
         public void Init(int id)
         {
             Article = Article.GetOnePost(id);
+            AuthorName = Editor.getName(article.Author);
         }
     }
 }

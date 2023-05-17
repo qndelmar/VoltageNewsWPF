@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -111,7 +112,26 @@ public partial class Article
     {
         using(VoltageDbContext dbContext = new())
         {
-            return dbContext.Articles.First(r => r.NewsId == id);
+            Article article = dbContext.Articles.First(r => r.NewsId == id);
+            article.Views++;
+            dbContext.SaveChanges();
+            return article;
+        }
+    }
+
+    public static bool deleteArticle(int id)
+    {
+        try
+        {
+            using(VoltageDbContext dbContext = new())
+            {
+                Article article = dbContext.Articles.First(r => r.NewsId == id);
+                dbContext.Articles.Remove(article);
+                    dbContext.SaveChanges();
+                return true;
+            }
+        }catch(Exception ex) {
+            return false;
         }
     }
 }
