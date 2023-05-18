@@ -35,8 +35,8 @@
             </StackPanel>
                
             </Grid>
-            <TextBlock Width="530" Margin="0 20 0 0" HorizontalAlignment="Center" Style="{StaticResource TextBlockDefault}" Text="{Binding Article.ArticleText}" TextWrapping="Wrap"/>
-            <ListBox ItemsSource="{Binding Comments}">
+            <TextBlock Width="600" Margin="0 20 0 0" HorizontalAlignment="Center" Style="{StaticResource TextBlockDefault}" Text="{Binding Article.ArticleText}" TextWrapping="Wrap"/>
+            <ListBox  BorderBrush="Transparent" ItemsSource="{Binding Comments}">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel  Orientation="Horizontal"/>
@@ -44,12 +44,10 @@
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderThickness="1" BorderBrush="Black" Margin="5 50">
-                            <StackPanel Width="400" Height="100">
-                                <TextBlock Padding="5" Text="{Binding Author.Nickname}"/>
-                                <TextBlock Padding="5" Text="{Binding Text}"></TextBlock>
-                            </StackPanel>
-                        </Border>
+                        <StackPanel HorizontalAlignment="Center"  Width="530" Height="50">
+                            <TextBlock Padding="5" Text="{Binding Author}"/>
+                            <TextBlock Padding="5" Text="{Binding Text}"></TextBlock>
+                        </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>

@@ -17,7 +17,7 @@ namespace VoltageNews.ViewModels
         private string authorName { get; set; }
         private RelayCommand deleteArticle { get; set; }
         private RelayCommand editArticle { get; set; }
-        private List<Comment> comments { get; set; }
+        private List<object> comments { get; set; }
 
         public string AuthorName
         {
@@ -35,7 +35,7 @@ namespace VoltageNews.ViewModels
             }
         }
 
-        public List<Comment> Comments
+        public List<object> Comments
         {
             get => comments;
             set
@@ -87,6 +87,7 @@ namespace VoltageNews.ViewModels
             Article = Article.GetOnePost(id);
             AuthorName = Editor.getName(article.Author);
             Comments = Comment.getComments(id);
+            
         }
     }
 }

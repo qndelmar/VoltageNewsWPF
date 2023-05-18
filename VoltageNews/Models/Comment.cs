@@ -20,11 +20,21 @@ public partial class Comment
 
     public virtual User Author { get; set; } = null!;
 
-    public static List<Comment> getComments(int id)
+    public static List<object> getComments(int id)
     {
         using(VoltageDbContext dbCtx = new())
         {
-            return dbCtx.Comments.Where(r => r.ArticleId == id).ToList();
+            return dbCtx.Comments.Where(r => r.ArticleId == id)
+                .Join(dbCtx.Users,
+                c => c.AuthorId,
+                u => u.Id,
+                (c, u) => new
+                {
+                    Author = u.Nickname,
+                    Text = c.Text,
+                    Created = c.Date
+
+                }).ToList<object>();
         }
     }
 }
