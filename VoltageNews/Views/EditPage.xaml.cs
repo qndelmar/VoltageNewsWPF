@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VoltageNews.ViewModels;
 
 namespace VoltageNews.Views
 {
@@ -20,9 +21,10 @@ namespace VoltageNews.Views
     /// </summary>
     public partial class EditPage : Page
     {
-        public EditPage()
+        public EditPage(int id)
         {
             InitializeComponent();
+            (DataContext as EditPageVM).Init(id);
         }
     }
 }

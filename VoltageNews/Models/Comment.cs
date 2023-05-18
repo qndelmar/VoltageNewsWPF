@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace VoltageNews.Models;
 
@@ -18,4 +19,12 @@ public partial class Comment
     public virtual Article Article { get; set; } = null!;
 
     public virtual User Author { get; set; } = null!;
+
+    public static List<Comment> getComments(int id)
+    {
+        using(VoltageDbContext dbCtx = new())
+        {
+            return dbCtx.Comments.Where(r => r.ArticleId == id).ToList();
+        }
+    }
 }

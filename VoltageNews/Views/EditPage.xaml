@@ -4,11 +4,23 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:VoltageNews.Views"
+      xmlns:vm="clr-namespace:VoltageNews.ViewModels"
+      xmlns:hc="https://handyorg.github.io/handycontrol"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EditPage">
+    <Page.DataContext>
+        <vm:EditPageVM/>
+    </Page.DataContext>
+    <StackPanel>
+        <StackPanel Margin="10" DataContext="{Binding Article, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <TextBlock Style="{StaticResource TextBlockBoldBaseStyle}" Text="Edit page" HorizontalAlignment="Left" Margin="20" FontSize="30"/>
+            <TextBlock Margin="20 0 0 0">Title</TextBlock>
+            <hc:TextBox Width="200" Height="10" Text="{Binding Title}" HorizontalAlignment="Left" Margin="20 0 0 0"></hc:TextBox>
+            <hc:TextBox Width="300" Height="50" VerticalScrollBarVisibility="Visible" Text="{Binding ShortDescription}" HorizontalAlignment="Left" Margin="20"/>
+            <hc:TextBox Width="400" Height="100" Margin="20 0 0 0" HorizontalAlignment="Left" VerticalScrollBarVisibility="Visible" Text="{Binding ArticleText}"/>
+        </StackPanel>
+        <Button Command="{Binding SubmitCmd}" Style="{StaticResource ButtonPrimary}" Margin="20">Submit</Button>
+    </StackPanel>
 
-    <Grid>
-        
-    </Grid>
 </Page>

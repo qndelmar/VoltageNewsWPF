@@ -18,7 +18,7 @@
                 <Button Content="X" Margin="0 0 10 0" Style="{StaticResource ButtonDanger}" Command="{Binding DeleteArticle}">
                     
                 </Button>
-                <Button Content="Edit" Margin="0 0 10 0" Style="{StaticResource ButtonInfo}"></Button>
+                <Button Command="{Binding EditArticle}" Content="Edit" Margin="0 0 10 0" Style="{StaticResource ButtonInfo}"></Button>
             </StackPanel>
             <TextBlock Name="Title" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20 0"  Style="{StaticResource TextBlockBoldBaseStyle}" FontSize="30" Text="{Binding Article.Title}"/>
             <Image Source="{Binding Article.ImageUri}" Width="532" Height="300"/>
@@ -36,6 +36,24 @@
                
             </Grid>
             <TextBlock Width="530" Margin="0 20 0 0" HorizontalAlignment="Center" Style="{StaticResource TextBlockDefault}" Text="{Binding Article.ArticleText}" TextWrapping="Wrap"/>
+            <ListBox ItemsSource="{Binding Comments}">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel  Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderThickness="1" BorderBrush="Black" Margin="5 50">
+                            <StackPanel Width="400" Height="100">
+                                <TextBlock Padding="5" Text="{Binding Author.Nickname}"/>
+                                <TextBlock Padding="5" Text="{Binding Text}"></TextBlock>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </StackPanel>
+        
     </ScrollViewer>
 </Page>

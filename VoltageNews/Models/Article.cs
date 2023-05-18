@@ -134,4 +134,22 @@ public partial class Article
             return false;
         }
     }
+    public static bool editArticle(string newTitle, string newShort, string longDesc, int id)
+    {
+        try
+        {
+            using(VoltageDbContext dbCtx = new()){
+                Article article = dbCtx.Articles.First(r => r.NewsId == id);
+                article.Title = newTitle;
+                article.ShortDescription = newShort;
+                article.ArticleText = longDesc;
+                dbCtx.SaveChanges();
+                return true;
+            }
+        }
+        catch (Exception ex)
+        {
+            return false;
+        }
+    }
 }
