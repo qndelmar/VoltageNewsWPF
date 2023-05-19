@@ -37,4 +37,25 @@ public partial class Comment
                 }).ToList<object>();
         }
     }
+    public static bool createComment(int id, string text)
+    {
+        try
+        {
+            using (VoltageDbContext dbCtx = new())
+            {
+                dbCtx.Comments.Add(new Comment
+                {
+                    ArticleId = id,
+                    Text = text,
+                    Date = DateTime.Now,
+                    AuthorId = UserStore.User.Id
+                });
+                dbCtx.SaveChanges();
+                return true;
+            }
+        }catch(Exception ex)
+        {
+            return false;
+        }
+    }
 }

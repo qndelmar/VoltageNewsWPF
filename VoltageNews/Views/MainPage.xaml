@@ -32,11 +32,6 @@
                     <Image Source="/Assets/user.png" Height="30" Width="30"/>
                 </hc:SideMenuItem.Icon>
             </hc:SideMenuItem>
-            <hc:SideMenuItem Header="Настройки" FontWeight="Bold">
-                <hc:SideMenuItem.Icon>
-                    <Image Source="/Assets/settings.png" Height="30" Width="30"/>
-                </hc:SideMenuItem.Icon>
-            </hc:SideMenuItem>
             <hc:SideMenuItem Name="graphs" Header="Статистика" FontWeight="Bold">
                 <hc:SideMenuItem.Icon>
                     <Image Source="/Assets/graph.png" Height="30" Width="30"/>

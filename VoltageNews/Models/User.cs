@@ -108,4 +108,39 @@ public partial class User
             return 500; 
         }
     }
+
+    public static bool editUserPermission(int id, string kindOfPermission)
+    {
+        try
+        {
+            using(VoltageDbContext dbCtx = new())
+            {
+                User? user = dbCtx.Users.FirstOrDefault(r => r.Id == id);
+                if(user == null)
+                {
+                    throw new Exception("This user is not exists");
+                }
+                switch (kindOfPermission)
+                {
+                    case "Пользователь":
+                        user.Role = 0;
+                        break;
+                    case "Редактор":
+                        user.Role = 1;
+                        break;
+                    case "Администратор":
+                        user.Role = 2;
+                        break;
+                    default:
+                        throw new Exception("Incorrect role");
+                }
+                dbCtx.SaveChanges();
+                return true;
+            }
+        }
+        catch(Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
 }

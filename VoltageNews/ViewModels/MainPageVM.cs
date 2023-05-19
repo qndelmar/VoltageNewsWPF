@@ -42,13 +42,7 @@ namespace VoltageNews.ViewModels
                     }
                 case ("Профиль"):
                     {
-                        PageManager.helpFrame?.Navigate(new Account());
-                        PageManager.helpFrame?.RemoveBackEntry();
-                        break;
-                    }
-                case ("Настройки"):
-                    {
-                        PageManager.helpFrame?.Navigate(new Settings());
+                        PageManager.helpFrame?.Navigate(new AccountManagement());
                         PageManager.helpFrame?.RemoveBackEntry();
                         break;
                     }

@@ -18,6 +18,8 @@ namespace VoltageNews.ViewModels
         private RelayCommand deleteArticle { get; set; }
         private RelayCommand editArticle { get; set; }
         private List<object> comments { get; set; }
+        private string newCommentText { get; set; }
+        private RelayCommand createComment { get; set; }
 
         public string AuthorName
         {
@@ -41,6 +43,15 @@ namespace VoltageNews.ViewModels
             set
             {
                 comments = value;
+                OnPropertyChanged();
+            }
+        }
+        public string NewCommentText
+        {
+            get => newCommentText;
+            set
+            {
+                newCommentText = value;
                 OnPropertyChanged();
             }
         }
@@ -79,6 +90,17 @@ namespace VoltageNews.ViewModels
                 return editArticle ?? (editArticle = new RelayCommand(r =>
                 {
                     PageManager.helpFrame?.Navigate(new EditPage(Article.NewsId));
+                }));
+            }
+        }
+        public RelayCommand CreateComment
+        {
+            get
+            {
+                return createComment ?? (createComment = new RelayCommand(r =>
+                {
+                    bool result = Comment.createComment(article.NewsId, newCommentText);
+                    Comments = Comment.getComments(article.NewsId);
                 }));
             }
         }

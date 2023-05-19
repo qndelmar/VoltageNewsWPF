@@ -8,7 +8,7 @@
       xmlns:hc="https://handyorg.github.io/handycontrol"
       mc:Ignorable="d" 
       d:DesignHeight="650" d:DesignWidth="800"
-      Title="HomePage">
+      Title="HomePage" Background="#FF1C1C1C">
     <Page.DataContext>
         <vm:HomePageViewModel/>
     </Page.DataContext>
@@ -16,16 +16,16 @@
         <StackPanel Orientation="Horizontal">
             <hc:SearchBar Text="{Binding SearchText}" Width="380" hc:InfoElement.Placeholder="Write smth..." IsRealTime="False" Command="{Binding SearchItems}" Margin="20 30 0 0"  Style="{StaticResource SearchBarExtend}" hc:InfoElement.Necessary="True" />
             <hc:ComboBox SelectedValue="{Binding SortText}" Height="35" Width="200" Margin="20 30 0 0" SelectionChanged="ComboBox_SelectionChanged" Name="comboBox" DropDownClosed="comboBox_DropDownClosed">
-                <ComboBoxItem>
+                <ComboBoxItem IsSelected="True" Style="{StaticResource ComboBoxItemBaseStyle}">
                     Default
                 </ComboBoxItem>
-                <ComboBoxItem>Срочные новости</ComboBoxItem>
-                <ComboBoxItem>Развлечения</ComboBoxItem>
-                <ComboBoxItem>Политика</ComboBoxItem>
+                <ComboBoxItem Style="{StaticResource ComboBoxItemBaseStyle}">Срочные новости</ComboBoxItem>
+                <ComboBoxItem Style="{StaticResource ComboBoxItemBaseStyle}">Развлечения</ComboBoxItem>
+                <ComboBoxItem Style="{StaticResource ComboBoxItemBaseStyle}">Политика</ComboBoxItem>
             </hc:ComboBox>
         </StackPanel>
         <ListBox ScrollViewer.VerticalScrollBarVisibility="Auto" Height="450" Width="800"  Margin="0 20 0 0" ItemsSource="{Binding Data}"  
-         Style="{DynamicResource StackPanelHorizontalListBox}">
+         Style="{DynamicResource StackPanelHorizontalListBox}" BorderBrush="Transparent">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel  Orientation="Horizontal"/>
@@ -33,15 +33,15 @@
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderThickness="1" BorderBrush="Black" Margin="5 50">
-                        <StackPanel MouseUp="StackPanel_MouseUp" Width="250" Height="200">
-                            <Image Width="250" Height="144">
+                    <Border CornerRadius="30" BorderThickness="5" BorderBrush="#FF212121" Background="Transparent">
+                        <StackPanel Background="#FF212121">
+                            <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" Width="250" Height="144">
                                 <Image.Source>
                                     <BitmapImage UriSource="{Binding ImageUri}"/>
                                 </Image.Source>
                             </Image>
-                            <TextBlock Padding="5" Text="{Binding Title}"></TextBlock>
-                            <TextBlock Padding="5" Text="{Binding ShortDescription}"/>
+                            <TextBlock Style="{StaticResource TextBlockBaseStyle}" Foreground="LightPink" HorizontalAlignment="Left" Padding="5" Text="{Binding Title}"></TextBlock>
+                            <TextBlock Style="{StaticResource TextBlockBaseStyle}" HorizontalAlignment="Left" Padding="5" Text="{Binding ShortDescription}"/>
                         </StackPanel>
                     </Border>
                 </DataTemplate>

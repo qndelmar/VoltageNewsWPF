@@ -26,8 +26,9 @@
       <None Remove="Assets\auth.jpg" />
       <None Include="..\.editorconfig" Link=".editorconfig" />
       <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+      <PackageReference Include="DotNetProjects.WpfToolkit.DataVisualization" Version="6.1.94" />
+      <PackageReference Include="FontAwesome5" Version="2.1.11" />
       <PackageReference Include="HandyControl" Version="3.4.0" />
-      <PackageReference Include="MaterialMenu" Version="0.0.4.5" />
       <PackageReference Include="Meziantou.WpfFontAwesome" Version="5.15.4" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5">
