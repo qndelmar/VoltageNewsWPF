@@ -26,7 +26,7 @@ namespace VoltageNews
     public partial class MainWindow : Window
     {
         static MainWindow window;
-        public MainWindow()
+       public MainWindow()
         {
             InitializeComponent();
             myFrame.Navigate(new Auth());
@@ -36,10 +36,6 @@ namespace VoltageNews
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
             ConfigHelper.Instance.SetLang("en");
-            using(VoltageDbContext ctx = new())
-            {
-                MessageBox.Show(ctx.LoginHistories.ToList().Count.ToString());
-            }
         }
     }
 }

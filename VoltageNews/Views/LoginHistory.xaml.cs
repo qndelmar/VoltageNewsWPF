@@ -20,9 +20,11 @@ namespace VoltageNews.Views
     /// </summary>
     public partial class LoginHistory : Page
     {
+
         public LoginHistory()
         {
             InitializeComponent();
+            mainDGRID.ItemsSource = Models.LoginHistory.getLoginHistory();
         }
     }
 }

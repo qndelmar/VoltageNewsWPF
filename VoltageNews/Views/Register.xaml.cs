@@ -1,13 +1,4 @@
-﻿using HandyControl.Controls;
-using HandyControl.Tools;
-using Microsoft.VisualBasic;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Drawing;
-using System.Dynamic;
-using System.Runtime.CompilerServices;
-using System.Threading;
+﻿using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;

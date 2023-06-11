@@ -8,9 +8,9 @@ namespace VoltageNews.Models
 {
     internal class UserStore
     {
-        private static User user { get; set; }
+        private static User? user { get; set; }
 
-        public static User User
+        public static User? User
         {
             get
             {

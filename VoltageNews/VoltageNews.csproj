@@ -16,7 +16,6 @@
       <None Remove="Assets\home.png" />
       <None Remove="Assets\settings.png" />
       <None Remove="Assets\user.png" />
-      <None Remove="Views\graph.png" />
       <Resource Include="Assets\add.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Resource>
@@ -24,6 +23,15 @@
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Resource>
       <None Remove="Assets\auth.jpg" />
+      <COMReference Include="Microsoft.Office.Interop.Word">
+        <WrapperTool>tlbimp</WrapperTool>
+        <VersionMinor>7</VersionMinor>
+        <VersionMajor>8</VersionMajor>
+        <Guid>00020905-0000-0000-c000-000000000046</Guid>
+        <Lcid>0</Lcid>
+        <Isolated>false</Isolated>
+        <EmbedInteropTypes>true</EmbedInteropTypes>
+      </COMReference>
       <None Include="..\.editorconfig" Link=".editorconfig" />
       <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
       <PackageReference Include="DotNetProjects.WpfToolkit.DataVisualization" Version="6.1.94" />
@@ -62,7 +70,6 @@
       <Resource Include="Assets\user.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Resource>
-      <Resource Include="Views\graph.png" />
     </ItemGroup>
 
 </Project>

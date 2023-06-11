@@ -177,7 +177,7 @@ public partial class VoltageDbContext : DbContext
             entity.ToTable("LoginHistory");
             entity.Property(e => e.Id).HasColumnName("Id").HasColumnType("int");
             entity.Property(e => e.UserId).HasColumnName("UserId").HasColumnType("int");
-            entity.Property(e => e.LoginDate).HasColumnName("LoginDate").HasColumnType("date");
+            entity.Property(e => e.LoginDate).HasColumnName("LoginDate").HasColumnType("datetime");
             entity.HasOne(p => p.User).WithMany(d => d.LoginHistories).HasForeignKey("UserId").HasConstraintName("FK_LoginHistories_Users");
         });
 

@@ -1,12 +1,4 @@
 ﻿using HandyControl.Controls;
-using HandyControl.Tools.Extension;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Input;
 using VoltageNews.Helpers;
 using VoltageNews.Views;
 
@@ -58,9 +50,9 @@ namespace VoltageNews.ViewModels
                         PageManager.helpFrame?.RemoveBackEntry();
                         break;
                     }
-                case ("Поддержка пользователей"):
+                case ("История входов"):
                     {
-                        PageManager.helpFrame?.Navigate(new Support());
+                        PageManager.helpFrame?.Navigate(new LoginHistory());
                         PageManager.helpFrame?.RemoveBackEntry();
                         break;
                     }

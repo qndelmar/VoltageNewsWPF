@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Navigation;
+using System.Windows.Controls;
 using VoltageNews.Helpers;
 using VoltageNews.Models;
 using VoltageNews.Views;
@@ -13,21 +9,22 @@ namespace VoltageNews.ViewModels
 {
     internal class SoloPostVM : ObservableObject
     {
-        private Article article { get; set; }
-        private string authorName { get; set; }
-        private RelayCommand deleteArticle { get; set; }
-        private RelayCommand editArticle { get; set; }
-        private List<object> comments { get; set; }
-        private string newCommentText { get; set; }
-        private RelayCommand createComment { get; set; }
+        private Article? article { get; set; }
+        private string? authorName { get; set; }
+        private RelayCommand? deleteArticle { get; set; }
+        private RelayCommand? editArticle { get; set; }
+        private List<object>? comments { get; set; }
+        private string? newCommentText { get; set; }
+        private RelayCommand? createComment { get; set; }
+        private RelayCommand? printPage { get; set; }
 
-        public string AuthorName
+        public string? AuthorName
         {
             get { return authorName; }
             set { authorName = value; OnPropertyChanged(); }
         }
 
-        public Article Article
+        public Article? Article
         {
             get => article;
             set
@@ -37,7 +34,7 @@ namespace VoltageNews.ViewModels
             }
         }
 
-        public List<object> Comments
+        public List<object>? Comments
         {
             get => comments;
             set
@@ -46,7 +43,7 @@ namespace VoltageNews.ViewModels
                 OnPropertyChanged();
             }
         }
-        public string NewCommentText
+        public string? NewCommentText
         {
             get => newCommentText;
             set
@@ -55,7 +52,7 @@ namespace VoltageNews.ViewModels
                 OnPropertyChanged();
             }
         }
-        public RelayCommand DeleteArticle
+        public RelayCommand? DeleteArticle
         {
             get
             {
@@ -83,7 +80,7 @@ namespace VoltageNews.ViewModels
                 }));
             }
         }
-        public RelayCommand EditArticle
+        public RelayCommand? EditArticle
         {
             get
             {
@@ -93,7 +90,7 @@ namespace VoltageNews.ViewModels
                 }));
             }
         }
-        public RelayCommand CreateComment
+        public RelayCommand? CreateComment
         {
             get
             {

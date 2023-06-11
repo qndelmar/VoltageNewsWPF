@@ -13,8 +13,25 @@ namespace VoltageNews.Models
         public int UserId { get; set; }
 
         public DateTime LoginDate { get; set; }
+        public string UserEmail
+        {
+            get
+            {
+                using (VoltageDbContext dbCtx = new())
+                {
+                    return dbCtx.Users.FirstOrDefault(p => p.Id == UserId).Email;
+                }
+            }
+        }
 
         public virtual User User { get; set; } = null!;
-       
+
+        public static List<LoginHistory> getLoginHistory()
+        {
+            using (VoltageDbContext dbCtx = new())
+            {
+                return dbCtx.LoginHistories.ToList();
+            }
+        }
     }
 }

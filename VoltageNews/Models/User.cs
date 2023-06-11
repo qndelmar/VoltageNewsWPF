@@ -48,10 +48,11 @@ public partial class User
                 db.Users.Add(this);
                 try
                 {
+                      db.LoginHistories.Add(new LoginHistory { LoginDate = DateTime.Now, UserId = this.Id });
                       await db.SaveChangesAsync();
                       UserStore.User = this;
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
 
                 }
@@ -101,11 +102,13 @@ public partial class User
                 {
                     return 401;
                 }
+                db.LoginHistories.Add(new LoginHistory { LoginDate = DateTime.Now, UserId = result.Id });
+                await db.SaveChangesAsync();
                 UserStore.User = result;
                 return 200;
             }
         }
-        catch (Exception ex) {
+        catch (Exception) {
             return 500; 
         }
     }

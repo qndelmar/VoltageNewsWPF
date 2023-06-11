@@ -56,7 +56,7 @@ public partial class Article
                 return "All posts has been succesfully created!";
             }
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             return "Ooops... Try later...";
         }
@@ -132,7 +132,7 @@ public partial class Article
                     dbContext.SaveChanges();
                 return true;
             }
-        }catch(Exception ex) {
+        }catch(Exception) {
             return false;
         }
     }
@@ -149,7 +149,7 @@ public partial class Article
                 return true;
             }
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             return false;
         }

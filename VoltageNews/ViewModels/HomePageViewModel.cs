@@ -1,10 +1,5 @@
-﻿using HandyControl.Controls;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using VoltageNews.Helpers;
 using VoltageNews.Models;
 
@@ -12,11 +7,11 @@ namespace VoltageNews.ViewModels
 {
     internal class HomePageViewModel : ObservableObject
     {
-        private static ObservableCollection<Article> data { get; set; }
-        private int pagesAmount { get; set; }
-        private RelayCommand searchItems { get; set; }
-        private static string searchText { get; set; }
-        private static string sortText { get; set; }
+        private static ObservableCollection<Article>? data { get; set; }
+        private int? pagesAmount { get; set; }
+        private RelayCommand? searchItems { get; set; }
+        private static string? searchText { get; set; }
+        private static string? sortText { get; set; }
         private int pageIndex { get; set; }
         public int PageIndex
         {
@@ -31,7 +26,7 @@ namespace VoltageNews.ViewModels
             }
         }
 
-        public string SortText
+        public string? SortText
         {
             get
             {
@@ -43,7 +38,7 @@ namespace VoltageNews.ViewModels
             }
         }
 
-        public string SearchText
+        public string? SearchText
         {
             get
             {
@@ -56,13 +51,13 @@ namespace VoltageNews.ViewModels
             }
         }
 
-        public ObservableCollection<Article> Data
+        public ObservableCollection<Article>? Data
         {
             get { return data; }
             set { data = value; OnPropertyChanged(); }
         }
 
-        public RelayCommand SearchItems
+        public RelayCommand? SearchItems
         {
             get
             {
@@ -96,7 +91,7 @@ namespace VoltageNews.ViewModels
             PagesAmount = Convert.ToInt32(Math.Ceiling(pagesCount));
             PageIndex = 1;
         }
-        public int PagesAmount
+        public int? PagesAmount
         {
             get {
                 return pagesAmount;

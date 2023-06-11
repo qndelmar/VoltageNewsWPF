@@ -2,7 +2,6 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 using VoltageNews.Helpers;
-using VoltageNews.ViewModels;
 
 namespace VoltageNews.Views;
 

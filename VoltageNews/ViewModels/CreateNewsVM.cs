@@ -1,19 +1,10 @@
 ﻿using Microsoft.Win32;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using VoltageNews.Helpers;
 using VoltageNews.Models;
-using VoltageNews.Views;
 
 namespace VoltageNews.ViewModels
 {
@@ -89,7 +80,7 @@ namespace VoltageNews.ViewModels
         {
             get
             {
-                return addImageCommand ?? (addImageCommand = new RelayCommand(async r =>
+                return addImageCommand ?? (addImageCommand = new RelayCommand(r =>
                 {
                     OpenFileDialog fileDialog = new OpenFileDialog();
                     fileDialog.Filter = "Файлы изображений (*.bmp, *.jpg, *.png)|*.bmp;*.jpg;*.png";
@@ -146,13 +137,13 @@ namespace VoltageNews.ViewModels
             {
                 ImgurSharp.Imgur im = new("4c52e89be4366c0");
 
-                    using (MemoryStream ms = new MemoryStream(File.ReadAllBytes(_filePath)))
+                using (MemoryStream ms = new MemoryStream(File.ReadAllBytes(_filePath)))
                     {
                         ImgurSharp.Image image = await im.UploadImageAnonymous(ms, RandomStringGen.RandomGen() + Path.GetExtension(_filePath), "title", "description");
                         return image.Link;
                     }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return "Error";
             }
