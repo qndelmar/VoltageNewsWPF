@@ -21,7 +21,12 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/> 
         </Grid.RowDefinitions>
-        <charts:Chart Grid.Column="0">
+        <charts:Chart Grid.Column="0" Name="mainChart" Grid.ColumnSpan="3" Grid.RowSpan="3">
+            <charts:Chart.Series>
+                <charts:LineSeries Title="Views by date" IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+                    
+                </charts:LineSeries>
+            </charts:Chart.Series>
         </charts:Chart>
     </Grid>
 </Page>

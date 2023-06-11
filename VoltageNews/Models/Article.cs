@@ -115,7 +115,9 @@ public partial class Article
             Article article = dbContext.Articles.First(r => r.NewsId == id);
             article.Views++;
             dbContext.SaveChanges();
+            ViewsByDate.AddViewsToDate();
             return article;
+
         }
     }
 

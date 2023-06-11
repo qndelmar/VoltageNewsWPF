@@ -13,7 +13,7 @@
         <vm:HomePageViewModel/>
     </Page.DataContext>
     <StackPanel>
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <hc:SearchBar Text="{Binding SearchText}" Width="380" hc:InfoElement.Placeholder="Write smth..." IsRealTime="False" Command="{Binding SearchItems}" Margin="20 30 0 0"  Style="{StaticResource SearchBarExtend}" hc:InfoElement.Necessary="True" />
             <hc:ComboBox SelectedValue="{Binding SortText}" Height="35" Width="200" Margin="20 30 0 0" SelectionChanged="ComboBox_SelectionChanged" Name="comboBox" DropDownClosed="comboBox_DropDownClosed">
                 <ComboBoxItem IsSelected="True" Style="{StaticResource ComboBoxItemBaseStyle}">
@@ -33,8 +33,8 @@
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Border CornerRadius="30" BorderThickness="5" BorderBrush="#FF212121" Background="Transparent">
-                        <StackPanel Background="#FF212121">
+                    <Border CornerRadius="30" BorderThickness="1" Margin="5" BorderBrush="#FF212121">
+                        <StackPanel MouseUp="StackPanel_MouseUp" Background="#FF212121">
                             <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" Width="250" Height="144">
                                 <Image.Source>
                                     <BitmapImage UriSource="{Binding ImageUri}"/>
