@@ -26,6 +26,7 @@ public partial class VoltageDbContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     public virtual DbSet<ViewsByDate> ViewsByDates { get; set; }
+    public virtual DbSet<LoginHistory> LoginHistories { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Server=REINCARNDEITY;Database=VoltageDB;Trusted_Connection=True;TrustServerCertificate=true");
@@ -167,6 +168,17 @@ public partial class VoltageDbContext : DbContext
                 .HasColumnType("date")
                 .HasColumnName("date");
             entity.Property(e => e.Views).HasColumnName("views");
+        });
+
+        modelBuilder.Entity<LoginHistory>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+
+            entity.ToTable("LoginHistory");
+            entity.Property(e => e.Id).HasColumnName("Id").HasColumnType("int");
+            entity.Property(e => e.UserId).HasColumnName("UserId").HasColumnType("int");
+            entity.Property(e => e.LoginDate).HasColumnName("LoginDate").HasColumnType("date");
+            entity.HasOne(p => p.User).WithMany(d => d.LoginHistories).HasForeignKey("UserId").HasConstraintName("FK_LoginHistories_Users");
         });
 
         OnModelCreatingPartial(modelBuilder);

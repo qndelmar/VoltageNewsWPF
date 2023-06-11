@@ -27,6 +27,7 @@ public partial class User
     public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
 
     public virtual Editor? Editor { get; set; }
+    public virtual ICollection<LoginHistory> LoginHistories { get; set; } = new List<LoginHistory>();
 
     public User(string nickname, string email, string password)
     {
