@@ -24,7 +24,7 @@
                 <ComboBoxItem Style="{StaticResource ComboBoxItemBaseStyle}">Политика</ComboBoxItem>
             </hc:ComboBox>
         </StackPanel>
-        <ListBox ScrollViewer.VerticalScrollBarVisibility="Auto" Height="450" Width="800"  Margin="0 20 0 0" ItemsSource="{Binding Data}"  
+        <ListBox  ScrollViewer.VerticalScrollBarVisibility="Auto" Height="450" Width="800"  Margin="0 20 0 0" ItemsSource="{Binding Data}"  
          Style="{DynamicResource StackPanelHorizontalListBox}" BorderBrush="Transparent">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>

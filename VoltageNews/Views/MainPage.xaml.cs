@@ -18,7 +18,7 @@ namespace VoltageNews.Views
             PageManager.helpFrame = frame;
             PageManager.helpFrame.JournalOwnership = JournalOwnership.OwnsJournal;
             PageManager.helpFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
-            if(UserStore.User.Role < 1)
+            if(UserStore.User?.Role < 1)
             {
                 graphs.Visibility = Visibility.Collapsed;
                 addNews.Visibility = Visibility.Collapsed;

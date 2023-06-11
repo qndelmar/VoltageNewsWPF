@@ -48,13 +48,14 @@ public partial class User
                 db.Users.Add(this);
                 try
                 {
-                      db.LoginHistories.Add(new LoginHistory { LoginDate = DateTime.Now, UserId = this.Id });
-                      await db.SaveChangesAsync();
-                      UserStore.User = this;
+                    await db.SaveChangesAsync();
+                    db.LoginHistories.Add(new LoginHistory { LoginDate = DateTime.Now, UserId = this.Id });
+                    await db.SaveChangesAsync();
+                    UserStore.User = this;
                 }
-                catch(Exception)
+                catch(Exception ex)
                 {
-
+                    MessageBox.Show(ex.Message);
                 }
 
             }
