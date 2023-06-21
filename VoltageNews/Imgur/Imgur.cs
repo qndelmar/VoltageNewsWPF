@@ -30,7 +30,7 @@ namespace ImgurSharp
         public async Task<Image> UploadImageAnonymous(Stream imageStream, string name, string title, string description)
         {
             string base64Image = PhotoStreamToBase64(imageStream);
-
+                
             var jsonData = JsonConvert.SerializeObject(new
             {
                 image = base64Image,

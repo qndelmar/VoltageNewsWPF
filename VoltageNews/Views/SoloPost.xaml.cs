@@ -16,7 +16,7 @@ namespace VoltageNews.Views
         public SoloPost(int id)
         {
             InitializeComponent();
-            (DataContext as SoloPostVM).Init(id);
+            (DataContext as SoloPostVM)?.Init(id);
         }
 
         private void printBtn_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -42,13 +42,13 @@ namespace VoltageNews.Views
             authorRange.InsertParagraphAfter();
             Paragraph views = doc.Paragraphs.Add();
             Microsoft.Office.Interop.Word.Range viewsRange = views.Range;
-            viewsRange.Text = "Количество просмотров: " + (DataContext as SoloPostVM).Article.Views;
+            viewsRange.Text = "Количество просмотров: " + (DataContext as SoloPostVM)?.Article.Views;
             views.set_Style("Normal");
             viewsRange.Bold = 500;
             viewsRange.InsertParagraphAfter();
             Paragraph comments = doc.Paragraphs.Add();
             Microsoft.Office.Interop.Word.Range commRange = views.Range;
-            commRange.Text = "Количество комментариев: " + (DataContext as SoloPostVM).Article.Comments.Count;
+            commRange.Text = "Количество комментариев: " + (DataContext as SoloPostVM)?.Article.Comments.Count;
             commRange.Bold = 500;
             commRange.InsertParagraphAfter();
             Paragraph paragraph = doc.Paragraphs.Add();

@@ -24,8 +24,11 @@ public partial class Auth : Page
 
     private async void submitBtn_Click(object sender, System.Windows.RoutedEventArgs e)
     {
-       int result = await auth.SignIn();
-        if(result == 404)
+        loadingVisibility.Visibility = Visibility.Visible;
+        int result = await auth.SignIn();
+        loadingVisibility.Visibility = Visibility.Collapsed;
+
+        if (result == 404)
         {
             emailBox.BorderBrush = new SolidColorBrush(Colors.Red);
             errorTextBlock.Text = "Похоже, такого аккаунта не существует..";

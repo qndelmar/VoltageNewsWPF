@@ -32,7 +32,7 @@ namespace VoltageNews.ViewModels
                         PageManager.helpFrame?.RemoveBackEntry();
                         break;
                     }
-                case ("Профиль"):
+                case ("Редактирование прав"):
                     {
                         PageManager.helpFrame?.Navigate(new AccountManagement());
                         PageManager.helpFrame?.RemoveBackEntry();

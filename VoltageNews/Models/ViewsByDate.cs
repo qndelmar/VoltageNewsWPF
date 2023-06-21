@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Word;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -35,11 +36,17 @@ public partial class ViewsByDate
         List<KeyValuePair<DateTime, int>> newList = new();
         using (VoltageDbContext dbCtx = new())
         {
-            var allViews = dbCtx.ViewsByDates.ToList();
-            allViews.ForEach(p =>
+            var allViews = dbCtx.ViewsByDates.OrderByDescending(p => p.Date).ToList();
+            int i = 0;
+            foreach(var p in allViews)
             {
+                if(i > 7)
+                {
+                    break;
+                }
                 newList.Add(new KeyValuePair<DateTime, int>(p.Date.Date, p.Views));
-            });
+                i++;
+            }
         }
         return newList;
     }

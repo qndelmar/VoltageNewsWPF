@@ -40,7 +40,9 @@ public partial class Register : Page
             return;
         }
         User user = new User(nicknameBox.Text, emailBox.Text, passwordBox.Password);
+        loadingVisibility.Visibility = Visibility.Visible;
         bool result = await user.createUser();
+        loadingVisibility.Visibility = Visibility.Hidden;
         if (result)
         {
             submitButton.Background = new SolidColorBrush(Colors.Green);

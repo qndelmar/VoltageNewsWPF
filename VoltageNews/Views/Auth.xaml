@@ -12,6 +12,7 @@
         <vm:Auth/>
     </Page.DataContext>
     <Grid>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -30,6 +31,11 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
+        <Grid Panel.ZIndex="1000" Opacity="0.7" Background="Gray" Visibility="Hidden" Name="loadingVisibility" Grid.ColumnSpan="3">
+            <Border VerticalAlignment="Center" HorizontalAlignment="Center" Opacity="1" Background="{DynamicResource PrimaryBrush}" CornerRadius="10">
+                <hc:LoadingCircle Style="{StaticResource LoadingCircleLight}" Margin="10"/>
+            </Border>
+        </Grid>
         <Rectangle Grid.Column="2" Height="300"  RenderTransformOrigin="0.5,0.5" Margin="228,270,3,-120" Fill="#FFB34B4B">
             <Rectangle.RenderTransform>
                 <TransformGroup>

@@ -83,7 +83,7 @@ namespace VoltageNews.ViewModels
                 return addImageCommand ?? (addImageCommand = new RelayCommand(r =>
                 {
                     OpenFileDialog fileDialog = new OpenFileDialog();
-                    fileDialog.Filter = "Файлы изображений (*.bmp, *.jpg, *.png)|*.bmp;*.jpg;*.png";
+                    fileDialog.Filter = "Файлы изображений (*.bmp, *.jpg, *.png)|*.bmp;*.jpg;*.png;.jpeg";
 
                     if (fileDialog.ShowDialog() == true)
                     {
@@ -127,7 +127,7 @@ namespace VoltageNews.ViewModels
         {
             get
             {
-                return cancelBtnClick ?? (cancelBtnClick = new RelayCommand(r => goToHomepage()));
+                return cancelBtnClick ??= new RelayCommand(r => goToHomepage());
             }
         }
 
@@ -157,6 +157,7 @@ namespace VoltageNews.ViewModels
 
         public static void goToHomepage()
         {
+            MainPageVM.homepage = new Views.HomePage();
             PageManager.helpFrame?.Navigate(MainPageVM.homepage);
             PageManager.helpFrame?.RemoveBackEntry();
         }

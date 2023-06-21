@@ -13,7 +13,7 @@ namespace VoltageNews.Views
         {
             InitializeComponent();
 
-            ((LineSeries)mainChart.Series[0]).ItemsSource = ViewsByDate.GetKeyValuePairs();
+            ((BarSeries)mainChart.Series[0]).ItemsSource = ViewsByDate.GetKeyValuePairs();
         }
     }
 }

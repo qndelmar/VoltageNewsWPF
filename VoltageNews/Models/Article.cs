@@ -56,7 +56,7 @@ public partial class Article
                 return "All posts has been succesfully created!";
             }
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             return "Ooops... Try later...";
         }

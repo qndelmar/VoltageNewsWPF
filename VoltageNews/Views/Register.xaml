@@ -7,11 +7,11 @@
       xmlns:local="clr-namespace:VoltageNews.Views"
       xmlns:hc="https://handyorg.github.io/handycontrol"
       mc:Ignorable="d"
-      Title="Register" Height="450" Width="800" MinHeight="450" MaxHeight="450" MinWidth="800" MaxWidth="800">
+      Title="Register" Height="450" Width="800" MinHeight="450" MaxHeight="450" MinWidth="800" MaxWidth="800" Background="#FF1C1C1C">
     <Page.DataContext>
         <vm:Register/>
     </Page.DataContext>
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="400"/>
@@ -28,21 +28,26 @@
                 <RowDefinition Height="8*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
+
             <StackPanel Grid.Column="1" Grid.Row="1">
-                <TextBlock HorizontalAlignment="Center" FontWeight="ExtraBold" FontSize="18">CREATE NEW ACCOUNT</TextBlock>
-                <TextBlock HorizontalAlignment="Left" Margin="10 0 0 5" Text="Email" Foreground="Black" Style="{StaticResource TextBlockDefaultThiLight}"/>
+                <TextBlock HorizontalAlignment="Center" Foreground="White" FontWeight="ExtraBold" FontSize="18">CREATE NEW ACCOUNT</TextBlock>
+                <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="10 0 0 5" Text="Email" Style="{StaticResource TextBlockDefaultThiLight}"/>
                 <hc:AutoCompleteTextBox LostKeyboardFocus="emailBox_LostFocus" GotKeyboardFocus="emailBox_GotKeyboardFocus" Name="emailBox" ItemsSource="{Binding AllSuggestions, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Text="{Binding Email,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 </hc:AutoCompleteTextBox>
-                <TextBlock HorizontalAlignment="Left" Name="emailTip" Margin="10 0 0 5" Visibility="Collapsed"  Foreground="Black" Style="{StaticResource TextBlockDefaultThiLight}"/>
+                <TextBlock HorizontalAlignment="Left" Name="emailTip" Margin="10 0 0 5" Visibility="Collapsed"  Style="{StaticResource TextBlockDefaultThiLight}"/>
                 <TextBox x:Name="nicknameBox" Style="{StaticResource TextBoxExtend}" hc:InfoElement.Title="Nickname" VerticalAlignment="Center"/>
                 <hc:PasswordBox Name="passwordBox" KeyUp="PasswordBox_KeyUp" hc:InfoElement.Title="Password" ShowEyeButton="True"/>
                 <ProgressBar Foreground="#FFFFB52C"  Name="difficultyProgress" hc:VisualElement.Text="" Height="5" Margin="0 15 0 0"/>
                 <TextBlock HorizontalAlignment="Left" Margin="5" Name="passwordTip" Style="{StaticResource TextBlockDefaultDanger}"/>
                 <Button Click="submitButton_Click" Name="submitButton" Content="Register" IsEnabled="False" Style="{StaticResource ButtonPrimary}"/>
-                <TextBlock HorizontalAlignment="Center" MouseUp="TextBlock_MouseUp" Text="Log in"></TextBlock>
+                <TextBlock Foreground="White" HorizontalAlignment="Center" MouseUp="TextBlock_MouseUp" Text="Log in"></TextBlock>
             </StackPanel>
         </Grid>
         <Image  Source="/Assets/auth.jpg"  Grid.Column="1"/>
-
+        <Grid Panel.ZIndex="1000" Opacity="0.7" Background="Gray" Visibility="Hidden" Name="loadingVisibility" Grid.ColumnSpan="2" Margin="0,0,38,0">
+            <Border VerticalAlignment="Center" HorizontalAlignment="Center" Opacity="1" Background="{DynamicResource PrimaryBrush}" CornerRadius="10">
+                <hc:LoadingCircle Style="{StaticResource LoadingCircleLight}" Margin="10"/>
+            </Border>
+        </Grid>
     </Grid>
 </Page>

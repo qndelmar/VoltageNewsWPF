@@ -50,6 +50,11 @@ namespace VoltageNews.ViewModels
                 {
                     try
                     {
+                        if(string.IsNullOrEmpty(uid))
+                        {
+                            MessageBox.Show("Введите userID");
+                            return;
+                        }
                         bool result = User.editUserPermission(Convert.ToInt32(uid), Category);
                         PageManager.helpFrame?.Navigate(MainPageVM.homepage);
                         PageManager.helpFrame?.RemoveBackEntry();

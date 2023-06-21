@@ -14,6 +14,8 @@
       <None Remove="Assets\eye.png" />
       <None Remove="Assets\graph.png" />
       <None Remove="Assets\home.png" />
+      <None Remove="Assets\logo-no-background.ico" />
+      <None Remove="Assets\logo-no-background.png" />
       <None Remove="Assets\settings.png" />
       <None Remove="Assets\user.png" />
       <Resource Include="Assets\add.png">
@@ -62,6 +64,12 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Resource>
       <Resource Include="Assets\home.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <Resource Include="Assets\logo-no-background.ico">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <Resource Include="Assets\logo-no-background.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Resource>
       <Resource Include="Assets\settings.png">

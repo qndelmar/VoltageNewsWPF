@@ -8,7 +8,7 @@
       xmlns:charts="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=DotNetProjects.DataVisualization.Toolkit"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Graphs">
+      Title="Graphs" Background="Transparent">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -19,13 +19,13 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/> 
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <charts:Chart Grid.Column="0" Name="mainChart" Grid.ColumnSpan="3" Grid.RowSpan="3">
+        <charts:Chart Grid.Column="0" Name="mainChart" Grid.ColumnSpan="3" Grid.RowSpan="3" Foreground="White" BorderBrush="{x:Null}">
             <charts:Chart.Series>
-                <charts:LineSeries Title="Views by date" IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
-                    
-                </charts:LineSeries>
+                <charts:BarSeries Title="Views by date" Foreground="White"  IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">
+
+                </charts:BarSeries>
             </charts:Chart.Series>
         </charts:Chart>
     </Grid>
