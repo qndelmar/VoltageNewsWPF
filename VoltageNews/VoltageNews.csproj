@@ -14,8 +14,8 @@
       <None Remove="Assets\eye.png" />
       <None Remove="Assets\graph.png" />
       <None Remove="Assets\home.png" />
-      <None Remove="Assets\logo-no-background.ico" />
       <None Remove="Assets\logo-no-background.png" />
+      <None Remove="Assets\logo.ico" />
       <None Remove="Assets\settings.png" />
       <None Remove="Assets\user.png" />
       <Resource Include="Assets\add.png">
@@ -34,6 +34,9 @@
         <Isolated>false</Isolated>
         <EmbedInteropTypes>true</EmbedInteropTypes>
       </COMReference>
+      <Resource Include="Assets\logo.ico">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
       <None Include="..\.editorconfig" Link=".editorconfig" />
       <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
       <PackageReference Include="DotNetProjects.WpfToolkit.DataVisualization" Version="6.1.94" />
@@ -51,6 +54,7 @@
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+      <PackageReference Include="OpenAI" Version="1.7.2" />
       <Resource Include="Assets\auth.jpg">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Resource>
@@ -64,9 +68,6 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Resource>
       <Resource Include="Assets\home.png">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Resource>
-      <Resource Include="Assets\logo-no-background.ico">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Resource>
       <Resource Include="Assets\logo-no-background.png">

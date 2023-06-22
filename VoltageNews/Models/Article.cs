@@ -73,7 +73,8 @@ public partial class Article
     {
         using(VoltageDbContext dbContext = new())
         {
-            return dbContext.Articles.OrderBy(b => -b.NewsId).Where(r => r.Categories.FirstOrDefault(r => r.Title == sortType) != null)
+            return dbContext.Articles.OrderBy(b => -b.NewsId)
+                .Where(r => r.Categories.FirstOrDefault(r => r.Title == sortType) != null)
                 .Skip((pageNum - 1) * 9).Take(amount).ToList();
         }
     }
@@ -97,7 +98,8 @@ public partial class Article
     {
         using (VoltageDbContext dbContext = new())
         {
-            return dbContext.Articles.OrderBy(b => -b.NewsId).Where(r => r.Title.Contains(text)).Skip((pageNum-1)*9).Take(amount).ToList();
+            return dbContext.Articles.OrderBy(b => -b.NewsId)
+                .Where(r => r.Title.Contains(text)).Skip((pageNum-1)*9).Take(amount).ToList();
         }
     }
 

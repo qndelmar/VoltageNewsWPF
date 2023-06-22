@@ -21,6 +21,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Button Click="Button_Click" Name="btnPrint" Style="{DynamicResource ButtonPrimary}" Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" Margin="10"> Вывод на печать</Button>
         <charts:Chart Grid.Column="0" Name="mainChart" Grid.ColumnSpan="3" Grid.RowSpan="3" Foreground="White" BorderBrush="{x:Null}">
             <charts:Chart.Series>
                 <charts:BarSeries Title="Views by date" Foreground="White"  IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}">

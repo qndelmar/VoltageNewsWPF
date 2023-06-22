@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:VoltageNews"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Icon="/Assets/logo-no-background.png"
+        Icon="/Assets/logo.ico"
         Title="Voltage News" Height="450" Width="800" ResizeMode="CanMinimize" Background="#00010c">
     <Grid>
         <Frame x:Name="myFrame"/>

@@ -24,7 +24,7 @@ namespace VoltageNews.Views
             PrintDialog print = new();
             if(print.ShowDialog() == true)
             {
-                print.PrintVisual(this, "Печать новости");
+                print.PrintVisual(this, "Печать н   овости");
             }
         }
 

@@ -18,7 +18,8 @@ namespace VoltageNews.ViewModels
                    bool result = Article.editArticle(article.Title, article.ShortDescription, article.ArticleText, article.NewsId);
                     if(result == true)
                     {
-                        PageManager.helpFrame?.Navigate(new HomePage());
+                        MainPageVM.homepage = new HomePage();
+                        PageManager.helpFrame?.Navigate(MainPageVM.homepage);
                         PageManager.helpFrame?.RemoveBackEntry();
                     }
                 }));

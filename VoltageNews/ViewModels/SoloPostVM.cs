@@ -18,6 +18,7 @@ namespace VoltageNews.ViewModels
         private RelayCommand? createComment { get; set; }
         private RelayCommand? printPage { get; set; }
 
+
         public string? AuthorName
         {
             get { return authorName; }
@@ -63,7 +64,8 @@ namespace VoltageNews.ViewModels
                         bool result = Article.deleteArticle(article.NewsId);
                         if (result == true)
                         {
-                            PageManager.helpFrame?.Navigate(new HomePage());
+                            MainPageVM.homepage = new HomePage();
+                            PageManager.helpFrame?.Navigate(MainPageVM.homepage);
                             PageManager.helpFrame?.RemoveBackEntry();
                             return;
                         }
@@ -101,6 +103,7 @@ namespace VoltageNews.ViewModels
                 }));
             }
         }
+
         public void Init(int id)
         {
             Article = Article.GetOnePost(id);

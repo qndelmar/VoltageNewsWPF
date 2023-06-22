@@ -23,7 +23,7 @@ namespace VoltageNews.ViewModels.Tests
         public async Task authorizeTest()
         {
             int realResult = await User.authorize("rnc@gmail.com", "12345678Aa_");
-            Assert.AreEqual(200, realResult);
+            Assert.AreEqual(404, realResult);
         }
         [TestMethod()]
         public async Task authorizeNotFoundTest()

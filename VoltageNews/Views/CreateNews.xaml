@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:VoltageNews.Views"
       xmlns:vm="clr-namespace:VoltageNews.ViewModels"
+      xmlns:fa="clr-namespace:Meziantou.WpfFontAwesome;assembly=Meziantou.WpfFontAwesome"
       xmlns:hc="https://handyorg.github.io/handycontrol"
       mc:Ignorable="d" d:DesignWidth="800"
       Title="CreateNews" Height="650" Background="Transparent">
@@ -21,7 +22,7 @@
         <StackPanel>
             <TextBlock Style="{StaticResource TextBlockBoldBaseStyle}" Text="Добавление новости" Margin="0 30 0 0" FontSize="26"/>
             <TextBlock Style="{StaticResource TextBlockBaseStyle}" Text="{Binding HelperText, UpdateSourceTrigger=PropertyChanged}" Visibility="Visible" />
-            <hc:ComboBox Margin="0 10 0 0" Width="300" SelectedValue="{Binding Category, UpdateSourceTrigger=PropertyChanged}">
+            <hc:ComboBox SelectedIndex="{Binding SelectedIndex}" Margin="0 10 0 0" Width="300" SelectedValue="{Binding Category, UpdateSourceTrigger=PropertyChanged}">
                 <hc:CheckComboBoxItem Content="Срочные новости"/>
                 <hc:CheckComboBoxItem Content="Развлечения"/>
                 <hc:CheckComboBoxItem Content="Политика"/>
@@ -33,8 +34,18 @@
             </StackPanel>
             <hc:TextBox Text="{Binding ShortDescription, UpdateSourceTrigger=PropertyChanged}"  VerticalScrollBarVisibility="Visible" Height="50" TextWrapping="Wrap" VerticalContentAlignment="Top" Width="300" Margin="0 10 0 0" hc:InfoElement.Placeholder="Short description"/>
             <hc:TextBox Text="{Binding ArticleText, UpdateSourceTrigger=PropertyChanged}" hc:InfoElement.Placeholder="Текст статьи" Margin="0 10 0 0" VerticalContentAlignment="Top" Width="500" Height="150" VerticalScrollBarVisibility="Auto" TextWrapping="WrapWithOverflow"></hc:TextBox>
+
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="280 20 0 0">
-                <Button Command="{Binding CancelBtnClick}" Style="{StaticResource ButtonInfo}"  Height="30" Width="100" Content="Отмена" Foreground="Black"/>
+                <Button Command="{Binding GenerateText}" Width="89" Height="69" Style="{StaticResource ButtonBaseStyle}">
+                    <StackPanel>
+                        <fa:FontAwesomeIcon SolidIcon="Meteor" FontSize="18" ></fa:FontAwesomeIcon>
+                        <TextBlock Foreground="White">Generate via</TextBlock>
+                        <TextBlock Foreground="White" HorizontalAlignment="Center">OpenAI</TextBlock>
+                    </StackPanel>
+
+
+                </Button>
+                <Button Command="{Binding CancelBtnClick}" Style="{StaticResource ButtonInfo}" Margin="20 0 0 0"  Height="30" Width="100" Content="Отмена" Foreground="Black"/>
                 <Button Command="{Binding CreatePost}" Style="{StaticResource ButtonPrimary}" Margin="20 0 0 0" Height="30" Width="100" Content="Подтвердить" Foreground="White"/>
             </StackPanel>
         </StackPanel>

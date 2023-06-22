@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using OpenAI_API.Chat;
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -10,12 +11,16 @@ namespace VoltageNews.ViewModels
 {
     class CreateNewsVM : ObservableObject
     {
+        
         private static string? _filePath { get; set; }
         private static string uploadUri { get; set; } = "Not uploaded";
         private static string? title { get; set; }
         private static string? category { get; set; }
         private static string? shortDescription { get; set; }
         private static string? articleText { get; set; }
+        private static int selectedIndex { get; set; }
+        private RelayCommand? generateText { get; set; }
+
         private Visibility loadVisibility { get; set; } = Visibility.Collapsed;
         private static RelayCommand? addImageCommand;
         private static RelayCommand? createPost;
@@ -39,12 +44,25 @@ namespace VoltageNews.ViewModels
                 shortDescription = value;
             }
         }
+        public int SelectedIndex
+        {
+            get
+            {
+                return selectedIndex;
+            }
+            set
+            {
+                selectedIndex = value;
+                OnPropertyChanged();
+            }
+        }
         public string ArticleText
         {
             get { return articleText; }
             set
             {
                 articleText = value;
+                OnPropertyChanged();
             }
         }
         public string UploadUri
@@ -123,6 +141,23 @@ namespace VoltageNews.ViewModels
                 }));
             }
         }
+
+
+        public RelayCommand? GenerateText
+        {
+            get
+            {
+                return generateText ?? (generateText = new RelayCommand(async r =>
+                {
+                    LoadVisibility = Visibility.Visible;
+                    OpenAiMethods openAiGenerated = new OpenAiMethods();
+                    await openAiGenerated.getTextFromChatGPT(ShortDescription);
+                    ArticleText = openAiGenerated.ArticleText;
+                    SelectedIndex = openAiGenerated.CategoryID;
+                    LoadVisibility = Visibility.Collapsed;
+                }));
+            }
+        }
         public RelayCommand CancelBtnClick
         {
             get
@@ -161,5 +196,7 @@ namespace VoltageNews.ViewModels
             PageManager.helpFrame?.Navigate(MainPageVM.homepage);
             PageManager.helpFrame?.RemoveBackEntry();
         }
+
+
     }
 }

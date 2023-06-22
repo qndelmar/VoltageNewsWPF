@@ -24,6 +24,11 @@ namespace VoltageNews.Views
                 graphs.Visibility = Visibility.Collapsed;
                 addNews.Visibility = Visibility.Collapsed;
             }
+            if(UserStore.User?.Role < 2)
+            {
+                loginHistory.Visibility = Visibility.Collapsed;
+                editRights.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }
